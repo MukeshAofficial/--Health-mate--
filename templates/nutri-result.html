@@ -1,0 +1,51 @@
+<!-- result.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Plan</title>
+    <style>
+        /* Global styles */
+        body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom right, #000000, #666666); /* Black to Grey gradient */
+    margin: 0;
+    padding: 0;
+
+
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin: auto;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        p {
+            color: #333;
+            font-size: 16px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nutrition Plan</h1>
+        <p>{{ nutrition_plan }}</p>
+    </div>
+</body>
+</html>

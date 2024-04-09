@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthMate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #333, #666);
+            color: #fff;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .section-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .section {
+            flex: 0 1 calc(33.33% - 40px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section img {
+            width: 200px; /* Adjust image width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px;
+        }
+        .try-now-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .try-now-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to HealthMate</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a> 
+    <a href="/login">Login/Signup</a>
+    <a href="/medicines">Medicines</a>
+    <a href="/appointment">Appointment Booking</a>
+    <a href="/nutrition">Nutrition Guide</a>
+    <a href="/chatbot">HealthBot</a>
+    <a href="/consultation">Online Consultation</a>
+    <a href="/report">Report Summarizer</a>
+    <a href="/recommend">Recommendation</a>
+</nav>
+
+<div class="section-container">
+    <div class="section" id="medicines">
+        <h2>Medicines</h2>
+        <img src="{{ url_for('static', filename='medicine.png') }}" alt="medicines">
+        <p>Explore our selection of prescribed medicines and health supplements.</p>
+        <a href="/medicines"><button class="try-now-button">Explore</button></a>
+    </div>
+
+    <div class="section" id="appointment">
+    <h2>Appointment Booking</h2>
+    <img src="{{ url_for('static', filename='appointment.jpg') }}" alt="appointment">
+    <p>Schedule appointments with healthcare professionals at your convenience.</p>
+    <a href="/appointment"><button class="try-now-button">Book Now</button></a>
+</div>
+
+    <div class="section" id="nutrition">
+    <h2>Nutrition Guide</h2>
+    <img src="{{ url_for('static', filename='nutrition.png') }}" alt="nutrition">
+    <p>Access personalized dietary recommendations tailored to your health needs.</p>
+    <a href="/nutrition"><button class="try-now-button">Explore</button></a>
+    </div>
+</div>
+
+<div class="section-container">
+    <div class="section" id="healthbot">
+        <h2>HealthBot</h2>
+        <img src="{{ url_for('static', filename='healthbot.jpg') }}" alt="healthbot">
+        <p>Get instant answers to your medical queries from our AI-powered HealthBot.</p>
+        <a href="/chatbot"><button class="try-now-button">Chat Now</button></a>
+    </div>
+
+    <div class="section" id="consultation">
+        <h2>Online Consultation</h2>
+        <img src="{{ url_for('static', filename='online.png') }}" alt="consultation">
+        <p>Connect with healthcare specialists for virtual consultations and advice.</p>
+        <a href="/consultation"><button class="try-now-button">Consult Now</button></a>
+    </div>
+
+    <div class="section" id="report">
+        <h2>Report Summarizer</h2>
+        <img src="{{ url_for('static', filename='record.png') }}" alt="report">
+        <p>Receive concise summaries of your medical reports for easy understanding.</p>
+        <a href="/report"><button class="try-now-button">View Now</button></a>
+    </div>
+
+    <div class="section" id="report">
+        <h2>Recommendation</h2>
+        <img src="{{ url_for('static', filename='rec.jpg') }}" alt="report">
+        <p>Upload your injury image to receive tailored recommendations and precautions</p>
+        <a href="/report"><button class="try-now-button">View Now</button></a>
+    </div>
+    
+    
+</div>
+
+</body>
+</html>

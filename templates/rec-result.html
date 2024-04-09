@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            background: linear-gradient(180deg, #000000, #808080); /* Set background gradient for the whole page */
+            height: 100vh; /* Set body height to viewport height */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+
+        h1 {
+            text-align: center; /* Center the heading */
+            color: white; /* Set heading color to white */
+        }
+
+        div {
+            background: white; /* Set background color of the div to white */
+            color: black; /* Set text color to black */
+            width: 60%; /* Adjust width as needed */
+            padding: 20px; /* Add some padding */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+        }
+    </style>
+</head>
+<body>
+    <h1>Recommendations</h1>
+    <div>
+        {{ recommendation|safe }}
+    </div>
+</body>
+</html>

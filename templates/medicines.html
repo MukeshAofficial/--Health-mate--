@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tele-Medicine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #333, #666);
+            color: #fff;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .section-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .section {
+            flex: 0 1 calc(33.33% - 40px);
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section img {
+            width: 200px; /* Adjust image width as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 20px;
+        }
+        .try-now-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .try-now-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Tele-medicine</h1>
+</header>
+
+<nav>
+    <a href="/">Home</a> 
+    <a href="/login">Login/Signup</a>
+    <a href="/medicines">Medicines</a>
+    <a href="/appointment">Appointment Booking</a>
+    <a href="/nutrition">Nutrition Guide</a>
+    <a href="/chatbot">HealthBot</a>
+    <a href="/consultation">Online Consultation</a>
+    <a href="/report">Report Summarizer</a>
+	<a href="/recommend">Recommendation</a>
+</nav>
+
+<div class="section-container">
+    <div class="section" id="courses">
+        <h2>Paracetamol</h2>
+        <div>
+            <img src="{{ url_for('static', filename='para.jpg') }}" alt="Courses">
+            <p>Relieves pain and reduces fever..</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+
+
+
+  
+
+    <div class="section" id="courses">
+        <h2>Cetirizine</h2>
+        <div>
+            <img src="{{ url_for('static', filename='cet.jpg') }}" alt="Courses">
+            <p>Treats symptoms of allergies such as sneezing, runny nose, and itching.</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+    <div class="section" id="courses">
+        <h2>Aspirin</h2>
+        <div>
+            <img src="{{ url_for('static', filename='asp.jpg') }}" alt="Courses">
+            <p>Relieves mild to moderate pain, reduces fever, and alleviates headaches.</p>
+            <a href="/pay"><button class="try-now-button">PAY NOW</button></a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MetaMask Connection Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, black, grey); /* Updated background gradient */
+      height: 100vh; /* Full height */
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+    }
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff; /* White background */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #666;
+      margin: 10px 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px; /* Add margin to separate buttons */
+      transition: background-color 0.3s ease; /* Smooth transition */
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    #walletAddress, #walletBalance {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Connect Your MetaMask Wallet Here!</h1>
+    <button id='connectWallet' class="button">Connect Wallet</button>
+    <button id='getBalance' class="button" onclick="checkBalance()">Get Balance of Wallet</button>
+    <br> <!-- Add a line break for proper alignment -->
+    <a href="/pay" class="button">Pay</a>
+
+    <p id="walletAddress"></p>
+    <p id="walletBalance"></p>
+
+    <script type="text/javascript">
+      window.userWalletAddress = null
+      const connectWallet = document.getElementById('connectWallet')
+      const walletAddress = document.getElementById('walletAddress')
+      const walletBalance = document.getElementById('walletBalance')
+
+      function checkInstalled() {
+        if (typeof window.ethereum == 'undefined') {
+          connectWallet.innerText = 'MetaMask isnt installed, please install it'
+          connectWallet.classList.remove()
+          connectWallet.classList.add()
+          return false
+        }
+        connectWallet.addEventListener('click', connectWalletwithMetaMask)
+      }
+
+      async function connectWalletwithMetaMask() {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+          .catch((e) => {
+            console.error(e.message)
+            return
+          })
+
+        if (!accounts) { return }
+
+        window.userWalletAddress = accounts[0]
+        walletAddress.innerText = window.userWalletAddress
+
+        connectWallet.innerText = 'Sign Out'
+        connectWallet.removeEventListener('click', connectWalletwithMetaMask)
+        setTimeout(() => {
+          connectWallet.addEventListener('click', signOutOfMetaMask)
+        }, 200)
+
+      }
+
+      function signOutOfMetaMask() {
+        window.userwalletAddress = null
+        walletAddress.innerText = ''
+        connectWallet.innerText = 'Connect Wallet'
+
+        connectWallet.removeEventListener('click', signOutOfMetaMask)
+        setTimeout(() => {
+          connectWallet.addEventListener('click', connectWalletwithMetaMask)
+        }, 200)
+      }
+
+      async function checkBalance() {
+        let balance = await window.ethereum.request({ method: "eth_getBalance",
+        params: [
+          window.userWalletAddress,
+          'latest'
+        ]
+      }).catch((err)=> {
+          console.log(err)
+      })
+
+      console.log(parseFloat((balance) / Math.pow(10,18)))
+
+      walletBalance.innerText = parseFloat((balance) / Math.pow(10,18))
+    }
+
+ 
+
+    window.addEventListener('DOMContentLoaded', () => {
+      checkInstalled()
+    })
+    </script>
+
+  </div>
+</body>
+</html>
